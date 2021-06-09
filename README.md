@@ -19,6 +19,7 @@ But I am stuck with useState -> setPhotoArray(props); props has the photo array 
 So couldnot refactor the Modal.jsx with custom hook.
 
 The functionality is not yet completed, so I could not pay attention on CSS.
+Could not focus on Unit test.
 
 I have captured some snapshot in "Result_Snapshot" folder.
 ## Available Scripts
