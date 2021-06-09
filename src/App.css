@@ -24,15 +24,83 @@
   color: white;
 }
 
+.h2-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 11rem;
+}
+
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
+.table-row {
+  margin-left: 12rem;
+}
+
+.time-header {
+  margin-left: -4rem;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0, 0.7);
+}
+
+.modal-box {
+  position: relative;
+  top: 50%;
+  bottom: 50%;
+  transform: translate(50%, -25%);
+  height: 50%;
+  width: 50%;
+  overflow-y: auto;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  z-index: 1050;
+}
+
+.lds-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #cef;
+  border-color: #cef transparent #cef transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
 }
