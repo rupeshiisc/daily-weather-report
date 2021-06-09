@@ -16,6 +16,8 @@ I have written the logic for displaying the list of images li and on click flip 
 
 But I am stuck with useState -> setPhotoArray(props); props has the photo array from api, but it does not apply immediately in my case, I am trying to figure it out. 
 
+there is some bug in system, when you click first time Popup renders before it's state is set, so second click onward, it displays the all category of image in list in horizontal list and on click of each flipping appropriate image in modal.
+
 So couldnot refactor the Modal.jsx with custom hook.
 
 The functionality is not yet completed, so I could not pay attention on CSS.

@@ -37,7 +37,7 @@ const Modal = forwardRef((props, ref) => {
 
     const open = (props) => {
         console.log('ModalData', props)
-        setPhotoArray(props);
+        setPhotoArray(props.photos);
         console.log('photoArray', photoArray)
         filteredArray();
         setDisplay(true);        
@@ -56,18 +56,25 @@ const Modal = forwardRef((props, ref) => {
             <div className="modal-wrapper">
                 <div onClick={close} className="modal-backdrop"></div>
                 <div className="modal-box">
-                    <h2>Rover CAM</h2>
                     <div>
-                        <ul>
+                        <span>
+                            <h2>Rover CAM</h2>
+                        </span>
+                        <span ClassName="close-icon" onClick={() => close()}>
+                            <a href="#" class="close"> </a>
+                        </span>
+                    </div>
+                    <div>
+                        <ul className="horizontal">
                             {
                                 photoFiltered.map( (photo) => {
-                                    <li key={photo.id} onClick={selectCamImage} img_src={photo.img_src}>photo.name</li>
+                                    return <li className="image-nav" key={photo.id} onClick={selectCamImage} img_src={photo.img_src} >{photo.name}</li>
                                 })
                             }
                         </ul>
                     </div>
                     <div>
-                        {selectedImageURL ? <img src={selectedImageURL} alt="" /> : <span>No Photo available</span>}
+                        {selectedImageURL ? <img src={selectedImageURL} alt="" className="rover-image" /> : <span>No Photo available</span>}
                         
                     </div>
                 </div>
