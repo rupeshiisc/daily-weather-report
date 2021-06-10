@@ -1,5 +1,7 @@
 import React, { useState, forwardRef, useImperativeHandle }  from 'react';
 import ReactDOM from 'react-dom';
+import { CAM_PHOTO_VIEW } from './../services/constant';
+ 
 
 const Modal = forwardRef((props, ref) => {
     const [display, setDisplay] = useState(false);
@@ -17,19 +19,19 @@ const Modal = forwardRef((props, ref) => {
     const filteredArray = () => {
         let photosArray = [];
         if (photoArray && photoArray.length > 0) {
-            const filteredArr = photoArray.map((photo) => {                
-                if (photo.camera && photo.img_src) {
+            let count = 0;
+            setPhotoFiltered([]);
+            photoArray.map((photo) => {                
+                if (photo.camera && photo.img_src && CAM_PHOTO_VIEW.includes(photo.camera.name)) {
                     const photoObj = {                    
-                        id: photo.camera.id,
+                        id: photo.id,
                         name: photo.camera.name,
                         img_src: photo.img_src
                     }
-                    photosArray.push(photoObj);
-                    return photoObj;
+                    if (count < 10) photosArray.push(photoObj);    //just showing max 10 photos of type ['FHAZ', 'RHAZ', 'MAST', 'NAVCAM']  
+                    count = count + 1; 
                 }
-            });
-            console.log('filteredArr', filteredArr);
-            console.log('photosArray', photosArray);
+            });           
             setPhotoFiltered(photosArray);
             setSelectedImageURL(photosArray[0].img_src);
         }
@@ -61,14 +63,16 @@ const Modal = forwardRef((props, ref) => {
                             <h2>Rover CAM</h2>
                         </span>
                         <span ClassName="close-icon" onClick={() => close()}>
-                            <a href="#" class="close"> </a>
+                            <a href="javascript:void(0)" className="close"> </a>
                         </span>
                     </div>
                     <div>
                         <ul className="horizontal">
                             {
                                 photoFiltered.map( (photo) => {
-                                    return <li className="image-nav" key={photo.id} onClick={selectCamImage} img_src={photo.img_src} >{photo.name}</li>
+                                    return <li className="image-nav" key={photo.id} onClick={selectCamImage} img_src={photo.img_src} >
+                                                {photo.name}
+                                            </li>
                                 })
                             }
                         </ul>

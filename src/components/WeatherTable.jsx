@@ -1,12 +1,17 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import WeatherRowData from './WeatherRowData'
 import { getRoverCapturedData } from './../services/weatherApi';
 import Modal from './Modal';
 
 function WeatherTable(props) {
     
-    const renderWeatherRowData = (weather) => {
-        return <WeatherRowData weather={weather}/>
+
+    const displayCamView = (e) =>{
+        const sol_key = e.target.getAttribute('value');
+        openModal(sol_key);
+    }
+    const renderWeatherRowData = (weather) => {        
+        return <WeatherRowData weather={weather} displayCamView={displayCamView}/>
     }
     const getWeatherRows  = (weather) => {
         
@@ -18,12 +23,11 @@ function WeatherTable(props) {
     }
 
     const modalRef = useRef();
-    const openModal = () => {
+    const openModal = (solKey) => {
 
         async function callApi () {
-            const sol_key = 675;
-            const roverData = await getRoverCapturedData(sol_key);
-            // console.log("api data:", roverData);
+            const roverData = await getRoverCapturedData(solKey);
+            console.log("api data:", roverData);
 
             modalRef.current.openModal(roverData);
         }
