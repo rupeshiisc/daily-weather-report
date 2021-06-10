@@ -9,18 +9,10 @@ API Key: SJtLy0wNppl58fwcHcMcFKo9i4tkASgJlgLSmXkJ
 ) does not return (Date, sol, Pressure(Max, Avg, Min)) fields
 
 It took me some time and got the relevant data with api (https://mars.nasa.gov/rss/api/?feed=weather&category=insight_temperature&feedtype=json&ver=1.0)
-And I could show the Insight Weather Report Table. In this table added link and onClick event I have written code to call to get the api CAM data. But linking it to Portal Modal Popup is pending.
+And I could show the Insight Weather Report Table. In this table added link and onClick event I have written code to call to get the api CAM data. 
+And on click of the Sol link it fetch the rover image data from api and display the first image.
 
-So, I have added a Button "Call Rover API" and on click of this button, with hardcoded value of sol_key 675, making a call the Rover CAM image data, to show the images and list of images on Modal Popup.
-I have written the logic for displaying the list of images li and on click flip different image.
-
-But I am stuck with useState -> setPhotoArray(props); props has the photo array from api, but it does not apply immediately in my case, I am trying to figure it out. 
-
-there is some bug in system, when you click first time Popup renders before it's state is set, so second click onward, it displays the all category of image in list in horizontal list and on click of each flipping appropriate image in modal.
-
-So couldnot refactor the Modal.jsx with custom hook.
-
-The functionality is not yet completed, so I could not pay attention on CSS.
+I could not pay attention on CSS.
 Could not focus on Unit test.
 
 I have captured some snapshot in "Result_Snapshot" folder.

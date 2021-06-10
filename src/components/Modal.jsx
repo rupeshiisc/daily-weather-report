@@ -5,8 +5,7 @@ import { CAM_PHOTO_VIEW } from './../services/constant';
 
 const Modal = forwardRef((props, ref) => {
     const [display, setDisplay] = useState(false);
-    const [selectedImageURL, setSelectedImageURL] = useState('');
-    const [photoArray, setPhotoArray] = useState([]);
+    const [selectedImageURL, setSelectedImageURL] = useState('');    
     const [photoFiltered, setPhotoFiltered] = useState([]);
 
     useImperativeHandle(ref, () => {
@@ -16,7 +15,7 @@ const Modal = forwardRef((props, ref) => {
         }
     })
 
-    const filteredArray = () => {
+    const filteredArray = (photoArray) => {
         let photosArray = [];
         if (photoArray && photoArray.length > 0) {
             let count = 0;
@@ -37,11 +36,8 @@ const Modal = forwardRef((props, ref) => {
         }
     }
 
-    const open = (props) => {
-        console.log('ModalData', props)
-        setPhotoArray(props.photos);
-        console.log('photoArray', photoArray)
-        filteredArray();
+    const open = (props) => {                
+        filteredArray(props.photos);
         setDisplay(true);        
     }
 
@@ -62,9 +58,7 @@ const Modal = forwardRef((props, ref) => {
                         <span>
                             <h2>Rover CAM</h2>
                         </span>
-                        <span ClassName="close-icon" onClick={() => close()}>
-                            <a href="javascript:void(0)" className="close"> </a>
-                        </span>
+                        <span className="close-icon close" onClick={() => close()}/>
                     </div>
                     <div>
                         <ul className="horizontal">

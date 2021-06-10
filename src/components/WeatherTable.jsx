@@ -56,8 +56,7 @@ function WeatherTable(props) {
                         getWeatherRows(props.data)
                     }
                 </tbody>
-            </table>
-            <button onClick={openModal} >Call ROVER API</button> 
+            </table>            
         </div>
     );
 }
