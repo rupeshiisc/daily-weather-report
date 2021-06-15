@@ -6,6 +6,7 @@ import { CAM_PHOTO_VIEW } from './../services/constant';
 const Modal = forwardRef((props, ref) => {
     const [display, setDisplay] = useState(false);
     const [selectedImageURL, setSelectedImageURL] = useState('');    
+    const [selectedImage, setSelectedImage] = useState('');    
     const [photoFiltered, setPhotoFiltered] = useState([]);
 
     useImperativeHandle(ref, () => {
@@ -33,6 +34,7 @@ const Modal = forwardRef((props, ref) => {
             });           
             setPhotoFiltered(photosArray);
             setSelectedImageURL(photosArray[0].img_src);
+            setSelectedImage(photosArray[0].id.toString());
         }
     }
 
@@ -47,6 +49,7 @@ const Modal = forwardRef((props, ref) => {
 
     const selectCamImage = (e) => {
         setSelectedImageURL(e.target.getAttribute('img_src'));
+        setSelectedImage(e.target.getAttribute('id').toString());
     }
 
     if (display) {
@@ -64,7 +67,7 @@ const Modal = forwardRef((props, ref) => {
                         <ul className="horizontal">
                             {
                                 photoFiltered.map( (photo) => {
-                                    return <li className="image-nav" key={photo.id} onClick={selectCamImage} img_src={photo.img_src} >
+                                    return <li className={selectedImage===photo.id.toString() ? "image-active" : "image-inActive"} id={photo.id}  key={photo.id} onClick={selectCamImage} img_src={photo.img_src} >
                                                 {photo.name}
                                             </li>
                                 })

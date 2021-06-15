@@ -4,7 +4,7 @@ import Spinner from "./../Spinner";
 import useFetch from "../services/useWeatherFetchHook";
 import WeatherTable from './WeatherTable';
 
-function WeatherDashboard(props) {
+function WeatherDashboard() {
   
     const { data: weatherData, loading, error } = useFetch();
     if (error) throw error;

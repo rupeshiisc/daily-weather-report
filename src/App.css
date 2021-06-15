@@ -120,6 +120,16 @@ ul.horizontal li {
   transform: rotate(-45deg);
 }
 
+.image-active {
+  color: purple;
+  cursor: default;
+  text-underline-position: below;
+}
+
+.image-inActive {
+  color: blue;
+  cursor: pointer;
+}
 
 .lds-container {
   display: flex;
